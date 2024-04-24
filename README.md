@@ -66,3 +66,9 @@ touch .nojekyll
 ## Configuring GitHub Pages with the Main Branch and `/docs` folder
 
 ![Configuring GitHub Pages](./images/pages.png)
+
+
+
+## Page tested
+
+[ISE_Template_doc](https://cesarbautista10.github.io/ISE_Template_doc/)
