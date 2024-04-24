@@ -1,62 +1,68 @@
-
 ## ISE_Template_doc
 
 This repository serves as the primary location for storing information about using a template on READTHEDOCS without configuration. It's important to note that this is a straightforward template designed to guide the documentation process.
 
-
 ## Commands 
-Install sphinx
-```py
+
+To begin, you'll need to install Sphinx:
+```bash
 pip install -U sphinx
 ```
-Install theme
-```py
+
+Next, install the theme:
+```bash
 pip install sphinx sphinx_rtd_theme
 ```
 
-## Create proyect
-create directory and enter
-> [!TIP]
-> I recommend open terminal in windows gitbash and linux only terminal 
+## Creating the Project
 
-```
+Create a directory and navigate into it. I recommend using Git Bash on Windows and the terminal on Linux:
+> [!TIP]
+> I recommend opening the terminal in Windows using Git Bash, and in Linux, use the terminal.
+
+```bash
 mkdir src && cd src && sphinx-quickstart
 ```
 
-Once create the prject find file conf.py, open file and edit the setion and add the theme 
-
-```py
+After creating the project, locate the `conf.py` file, open it, and add the theme:
+```python
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.napoleon']
 .
 .
 html_theme = 'sphinx_rtd_theme'
 ```
-## Compile project
 
-The proyect need edit the files in the dir source one a edit the files you can build the project this consist in the command
+## Compiling the Project
 
-use in windows 
+Once you've edited the files in the `source` directory, you can build the project using the following command:
+
+For Windows:
 ```bash
 ./make.bat html
 ```
 
-use in linux
+For Linux:
 ```bash
 make html
 ```
-## Deploy page 
-create a directory docs
+
+## Deploying the Page 
+
+Create a directory named `docs`:
 ```bash
 mkdir docs
 ```
 
-copy directory html to docs
-
+Copy the `html` directory to `docs`:
 ```bash
 cp -R src/build/html/* docs/
 ```
 
-in the directory docs you need create a file
-```py
+Within the `docs` directory, create a file:
+```bash
 touch .nojekyll
 ```
+
+## Configuring GitHub Pages with the Main Branch and `/docs` folder
+
+![Configuring GitHub Pages](./images/pages.png)
