@@ -55,3 +55,8 @@ copy directory html to docs
 ```bash
 cp -R src/build/html/* docs/
 ```
+
+in the directory docs you need create a file
+```py
+touch .nojekyll
+```
