@@ -65,12 +65,24 @@ build:
 	@cp -R src/build/html/* docs && touch docs/.nojekyll
 	@echo "Documentation built and copied to docs"
 
-pdfr:
+pdfw:
 	@rm -rf pdf && mkdir pdf
-	@cd src && ./make.bat clean && sphinx-build -b pdf source build
+	@cd src && ./make.bat clean && sphinx-build -M latexpdf source ../pdf	
+	@echo "PDF built and copied to docs"
+	@make build
+
+pdfx:
+	@rm -rf pdf && mkdir pdf
+	@cd src && ./make.bat clean &&  sphinx-build -b pdf source build
 	@cp src/build/*.pdf pdf && cd src && ./make.bat clean	
 	@echo "PDF built and copied to docs"
 	@make build
+
+clean:
+	@rm -rf docs
+	@rm -rf pdf
+	@rm -rf src
+	@echo "All files removed"
 
 
 ```
