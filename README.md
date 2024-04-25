@@ -13,6 +13,11 @@ Next, install the theme:
 ```bash
 pip install sphinx sphinx_rtd_theme
 ```
+generate pdf file
+
+```bash
+pip install rst2pdf
+```
 
 ## Creating the Project
 
@@ -26,10 +31,14 @@ mkdir src && cd src && sphinx-quickstart
 
 After creating the project, locate the `conf.py` file, open it, and add the theme:
 ```python
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.napoleon']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.napoleon', 'rst2pdf.pdfbuilder']
 .
 .
 html_theme = 'sphinx_rtd_theme'
+.
+.
+pdf_documents = [('index', u'rst2pdf', u'Sample rst2pdf doc', u'Your Name'),]
+
 ```
 
 ## Compiling the Project
