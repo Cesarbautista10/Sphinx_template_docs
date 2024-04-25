@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'UE'
+project = 'test'
 copyright = '2024, master'
 author = 'master'
 release = '0.0.1'
@@ -15,6 +15,7 @@ release = '0.0.1'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.napoleon', 'rst2pdf.pdfbuilder']
+
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -26,5 +27,6 @@ exclude_patterns = []
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
-pdf_documents = [('index', u'rst2pdf', u'Sample rst2pdf doc', u'{author}'),]
 
+
+pdf_documents = [('index', u'rst2pdf', u'Sample rst2pdf doc', u'Your Name'),]

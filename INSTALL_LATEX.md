@@ -13,11 +13,10 @@ Next, install the theme:
 ```bash
 pip install sphinx sphinx_rtd_theme
 ```
-generate a PDF file
+generate a PDF file, install MIKTEX for windows 
 
-```bash
-pip install rst2pdf
-```
+- [MikTeX](https://miktex.org/download)
+
 
 ## Creating the Project
 
@@ -35,9 +34,7 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.napoleon'
 .
 .
 html_theme = 'sphinx_rtd_theme'
-.
-.
-pdf_documents = [('index', u'rst2pdf', u'Sample rst2pdf doc', u'Your Name'),]
+
 
 ```
 
@@ -67,10 +64,15 @@ build:
 
 pdfr:
 	@rm -rf pdf && mkdir pdf
-	@cd src && ./make.bat clean && sphinx-build -b pdf source build
-	@cp src/build/*.pdf pdf && cd src && ./make.bat clean	
+	@cd src && ./make.bat clean && sphinx-build -M latexpdf source ../pdf	
 	@echo "PDF built and copied to docs"
 	@make build
+
+clean:
+	@rm -rf docs
+	@rm -rf pdf
+	@rm -rf src
+	@echo "All files removed"
 
 
 ```
