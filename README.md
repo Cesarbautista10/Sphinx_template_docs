@@ -1,10 +1,10 @@
 ## ISE_Template_doc
 
-This repository serves as the primary location for storing information about using a template on READTHEDOCS without configuration. It's important to note that this is a straightforward template designed to guide the documentation process.
+This repository acts as the primary location for storing information about employing a template on READTHEDOCS without the need for configuration. It's essential to note that this is a simple template intended to facilitate the documentation process.
 
 ## Commands 
 
-To begin, you'll need to install Sphinx:
+To start, you'll need to install Sphinx:
 ```bash
 pip install -U sphinx
 ```
@@ -13,7 +13,7 @@ Next, install the theme:
 ```bash
 pip install sphinx sphinx_rtd_theme
 ```
-generate pdf file
+generate a PDF file
 
 ```bash
 pip install rst2pdf
@@ -21,15 +21,15 @@ pip install rst2pdf
 
 ## Creating the Project
 
-Create a directory and navigate into it. I recommend using Git Bash on Windows and the terminal on Linux:
+Create a directory and navigate into it. I suggest utilizing Git Bash on Windows and the terminal on Linux:
 > [!TIP]
-> I recommend opening the terminal in Windows using Git Bash, and in Linux, use the terminal.
+> It is suggested to open the terminal in Windows using Git Bash, and in Linux, use the terminal.
 
 ```bash
 mkdir src && cd src && sphinx-quickstart
 ```
 
-After creating the project, locate the `conf.py` file, open it, and add the theme:
+After creating the project, find the `conf.py` file, open it, and add the theme:
 ```python
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'sphinx.ext.napoleon', 'rst2pdf.pdfbuilder']
 .
@@ -38,6 +38,40 @@ html_theme = 'sphinx_rtd_theme'
 .
 .
 pdf_documents = [('index', u'rst2pdf', u'Sample rst2pdf doc', u'Your Name'),]
+
+```
+
+### Create a Makefile
+
+Create a file named Makefile, and copy & paste the following:
+
+```Makefile
+# File Names
+NAME = ROUST
+file = src
+# Symbolic Targets
+help:
+	@echo "Use the following commands:"
+	@echo "make all     create files and build the project"
+	@echo "make pdfr     create the project environment"
+	@echo "make clean   remove all  files"
+
+
+all: build
+
+build:
+	@rm -rf docs && mkdir docs
+	@cd src && ./make.bat clean && ./make.bat html
+	@cp -R src/build/html/* docs && touch docs/.nojekyll
+	@echo "Documentation built and copied to docs"
+
+pdfr:
+	@rm -rf pdf && mkdir pdf
+	@cd src && ./make.bat clean && sphinx-build -b pdf source build
+	@cp src/build/*.pdf pdf && cd src && ./make.bat clean	
+	@echo "PDF built and copied to docs"
+	@make build
+
 
 ```
 
