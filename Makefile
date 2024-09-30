@@ -1,6 +1,13 @@
+# Created by: 	Cesar Bautista 
+# Date: 	2024-07-15
+# Description: 	Makefile for the project sphinx documentation
+# Usage: 	make
+
 # File Names
 NAME = ROUST
 file = src
+DIRECTORIO = ./pdf/latex
+DIR_HTML = ./src/build 
 # Symbolic Targets
 help:
 	@echo "Use the following commands:"
@@ -13,25 +20,29 @@ all: build
 
 build:
 	@rm -rf docs && mkdir docs
-	@cd src && ./make.bat clean && ./make.bat html
+	# @cd src && ./make.bat clean && ./make.bat html
+	@cd src && make clean && make html
 	@cp -R src/build/html/* docs && touch docs/.nojekyll
 	@echo "Documentation built and copied to docs"
+	@echo "All files removed"
+	@find $(DIRECTORIO) -type f ! -name '*.pdf' -exec rm -f {} \;
+	@cp -R pdf/latex/* pdf/ && rm -rf pdf/doctrees 
+	@rm -rf $(DIRECTORIO)
+	@echo "Archivos no PDF eliminados en $(DIRECTORIO)"
+	@rm -rf $(DIR_HTML)
+	
+	
 
-pdfw:
-	@rm -rf pdf && mkdir pdf
-	@cd src && ./make.bat clean && sphinx-build -M latexpdf source ../pdf	
-	@echo "PDF built and copied to docs"
-	@make build
 
 pdfx:
 	@rm -rf pdf && mkdir pdf
-	@cd src && ./make.bat clean &&  sphinx-build -b pdf source build
-	@cp src/build/*.pdf pdf && cd src && ./make.bat clean	
+	@cd src && make clean && sphinx-build -M latexpdf source ../pdf	
 	@echo "PDF built and copied to docs"
 	@make build
 
 clean:
 	@rm -rf docs
 	@rm -rf pdf
-	@rm -rf src
-	@echo "All files removed"
+	# @rm -rf src
+
+	
